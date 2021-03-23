@@ -511,6 +511,41 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
+.tiles {
+  width: 100%;
+  margin: 0 auto;
+  /* background-color: aqua; */
+}
+
+.tiles h2 {
+  text-align: center;
+}
+
+.tiles ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.tiles li {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+}
+
+#img-project {
+  width: 100%;
+  height: 100%;
+}
+.project-caption {
+  text-align: center;
+  margin-top: 25px;
+}
+
+/*end*/
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
