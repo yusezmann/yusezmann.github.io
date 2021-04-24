@@ -67,9 +67,9 @@
             <li>
               <a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a>
             </li>
-            <li>
+            <!-- <li>
               <a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a>
-            </li>
+            </li> -->
             <li>
               <a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
             </li>
@@ -423,7 +423,7 @@
       <!-- End Portfolio Section -->
 
       <!-- ======= Services Section ======= -->
-      <section id="services" class="services">
+      <!-- <section id="services" class="services">
         <div class="container">
           <div class="section-title">
             <h2>Services</h2>
@@ -457,7 +457,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- <div class="row">
             <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
@@ -491,8 +491,8 @@
               <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
             </div>
           </div> -->
-        </div>
-      </section>
+        <!-- </div>
+      </section> -->
       <!-- End Services Section -->
 
       <!-- ======= Contact Section ======= -->
@@ -500,6 +500,11 @@
         <div class="container">
           <div class="section-title">
             <h2>Contact</h2>
+          </div>
+
+          <div class="alert alert-success alert-dismissible fade show my-alert d-none" role="alert" >
+            <strong>Terimakasih!</strong> Pesan anda sudah kami terima.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
 
           <div class="row" data-aos="fade-in">
@@ -533,11 +538,11 @@
             </div>
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form name="contact-form">
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="name">Your Name</label>
-                    <input type="text" name="name" class="form-control" id="name" required />
+                    <input type="text" name="nama" class="form-control" id="name" required />
                   </div>
                   <div class="form-group col-md-6">
                     <label for="name">Your Email</label>
@@ -550,14 +555,21 @@
                 </div>
                 <div class="form-group">
                   <label for="name">Message</label>
-                  <textarea class="form-control" name="message" rows="10" required></textarea>
+                  <textarea class="form-control" name="pesan" rows="10" required></textarea>
                 </div>
                 <div class="my-3">
-                  <div class="loading">Loading</div>
+                  <!-- <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center"><button type="submit">Send Message</button> -->
+
+                  <button type="submit" class="btn btn-primary btn-kirim">Submit</button>
+                  <button class="btn btn-primary btn-loading d-none" type="button" disabled >
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -593,6 +605,34 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/typed.js/typed.min.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwss3_JcKhbscI-as5c9-p-WyN5QZ7EeY_mdsipRGxA6sw_IE9V94V82-kKzRd-tSa0XA/exec'
+      const form = document.forms['contact-form']
+      const btnKirim = document.querySelector('.btn-kirim')
+      const btnLoading = document.querySelector('.btn-loading')
+      const myAlert = document.querySelector('.my-alert')
+
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        //ketika tombol submit diklik
+        //tampilkan tombol loading,hilangkan tombol kirim
+        btnLoading.classList.toggle('d-none')
+        btnKirim.classList.toggle('d-none')
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            //tampilkan tombol kirim,hilangkan tombol loading
+            btnLoading.classList.toggle('d-none')
+            btnKirim.classList.toggle('d-none')
+            //tampilkan Alert
+            myAlert.classList.toggle('d-none')
+            //reset form
+            form.reset()
+            console.log('Success!', response)
+        })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
