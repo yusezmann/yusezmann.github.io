@@ -684,6 +684,13 @@ section {
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
+.portfolio-details .portfolio-info h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
 
 .portfolio-details .portfolio-info ul {
   list-style: none;
@@ -695,17 +702,19 @@ section {
   margin-top: 10px;
 }
 
-.portfolio-details .portfolio-description {
+.card .portfolio-details .portfolio-description {
   padding-top: 30px;
+  margin: auto;
 }
 
-.portfolio-details .portfolio-description h2 {
+.card .portfolio-details .portfolio-description h2 {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
+
 }
 
-.portfolio-details .portfolio-description p {
+.card .portfolio-details .portfolio-description p {
   padding: 0;
 }
 
