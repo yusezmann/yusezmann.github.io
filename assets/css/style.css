@@ -331,6 +331,7 @@ section {
   font-weight: 700;
   font-size: 26px;
   color: #173b6c;
+  border-bottom: 1px solid #eee;
 }
 
 .about .content ul {
